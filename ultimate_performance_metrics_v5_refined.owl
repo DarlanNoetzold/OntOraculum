@@ -1,0 +1,461 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/ultimate_performance_metrics_v5_refined.owl"
+         xmlns="http://example.org/ultimate_performance_metrics_v5_refined.owl#">
+
+<owl:Ontology rdf:about="http://example.org/ultimate_performance_metrics_v5_refined.owl"/>
+
+<owl:ObjectProperty rdf:about="#dependsOn">
+  <rdfs:domain rdf:resource="#Metric"/>
+  <rdfs:range rdf:resource="#Metric"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#impacts">
+  <rdfs:domain rdf:resource="#Metric"/>
+  <rdfs:range rdf:resource="#Metric"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#influences">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:domain rdf:resource="#Metric"/>
+  <rdfs:range rdf:resource="#Metric"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isMeasuredBy">
+  <rdfs:domain rdf:resource="#Metric"/>
+  <rdfs:range rdf:resource="#Sensors"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#contributesTo">
+  <rdfs:domain rdf:resource="#Metric"/>
+  <rdfs:range rdf:resource="#SLA"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#optimizes">
+  <rdfs:domain rdf:resource="#Energy"/>
+  <rdfs:range rdf:resource="#Hardware"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#increases">
+  <rdfs:domain rdf:resource="#Software"/>
+  <rdfs:range rdf:resource="#PerformanceKPIs"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#reduces">
+  <rdfs:domain rdf:resource="#Energy"/>
+  <rdfs:range rdf:resource="#Downtime"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#Metric">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Hardware">
+  <rdfs:subClassOf rdf:resource="#Metric"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#dependsOn"/>
+      <owl:someValuesFrom rdf:resource="#Network"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#dependsOn"/>
+      <owl:someValuesFrom rdf:resource="#Energy"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Network">
+  <rdfs:subClassOf rdf:resource="#Metric"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#impacts"/>
+      <owl:someValuesFrom rdf:resource="#NetworkLatency"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isMeasuredBy"/>
+      <owl:someValuesFrom rdf:resource="#Sensors"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Software">
+  <rdfs:subClassOf rdf:resource="#Metric"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#dependsOn"/>
+      <owl:someValuesFrom rdf:resource="#Hardware"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#increases"/>
+      <owl:someValuesFrom rdf:resource="#PerformanceKPIs"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isMeasuredBy"/>
+      <owl:someValuesFrom rdf:resource="#Sensors"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Energy">
+  <rdfs:subClassOf rdf:resource="#Metric"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#optimizes"/>
+      <owl:someValuesFrom rdf:resource="#Hardware"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#SecurityAndReliability">
+  <rdfs:subClassOf rdf:resource="#Metric"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#dependsOn"/>
+      <owl:someValuesFrom rdf:resource="#Software"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#impacts"/>
+      <owl:someValuesFrom rdf:resource="#ErrorRates"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isMeasuredBy"/>
+      <owl:someValuesFrom rdf:resource="#Sensors"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#CPU">
+  <rdfs:subClassOf rdf:resource="#Hardware"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#impacts"/>
+      <owl:someValuesFrom rdf:resource="#CPUUsage"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isMeasuredBy"/>
+      <owl:someValuesFrom rdf:resource="#Sensors"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#GPU">
+  <rdfs:subClassOf rdf:resource="#Hardware"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#impacts"/>
+      <owl:someValuesFrom rdf:resource="#GPUUsage"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isMeasuredBy"/>
+      <owl:someValuesFrom rdf:resource="#Sensors"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Memory">
+  <rdfs:subClassOf rdf:resource="#Hardware"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#impacts"/>
+      <owl:someValuesFrom rdf:resource="#CacheHitRate"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isMeasuredBy"/>
+      <owl:someValuesFrom rdf:resource="#Sensors"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Storage">
+  <rdfs:subClassOf rdf:resource="#Hardware"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Sensors">
+  <rdfs:subClassOf rdf:resource="#Hardware"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CPUUsage">
+  <rdfs:subClassOf rdf:resource="#CPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CPUInstructionsPerSecond">
+  <rdfs:subClassOf rdf:resource="#CPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CPUWaitTime">
+  <rdfs:subClassOf rdf:resource="#CPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CPUL1CacheUsage">
+  <rdfs:subClassOf rdf:resource="#CPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CPUL2CacheUsage">
+  <rdfs:subClassOf rdf:resource="#CPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CPUL3CacheUsage">
+  <rdfs:subClassOf rdf:resource="#CPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CPUTemperaturePerCore">
+  <rdfs:subClassOf rdf:resource="#CPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GPUUsage">
+  <rdfs:subClassOf rdf:resource="#GPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GPUMemoryUsage">
+  <rdfs:subClassOf rdf:resource="#GPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GPUCoreCount">
+  <rdfs:subClassOf rdf:resource="#GPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GPUActiveCores">
+  <rdfs:subClassOf rdf:resource="#GPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GPUPixelFillRate">
+  <rdfs:subClassOf rdf:resource="#GPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GPUTextureFillRate">
+  <rdfs:subClassOf rdf:resource="#GPU"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MemoryUsage">
+  <rdfs:subClassOf rdf:resource="#Memory"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NonPagedMemoryReserve">
+  <rdfs:subClassOf rdf:resource="#Memory"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PagedMemoryReserve">
+  <rdfs:subClassOf rdf:resource="#Memory"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CacheHitRate">
+  <rdfs:subClassOf rdf:resource="#Memory"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CacheMissRate">
+  <rdfs:subClassOf rdf:resource="#Memory"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ContextSwitchRate">
+  <rdfs:subClassOf rdf:resource="#Memory"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DiskUsage">
+  <rdfs:subClassOf rdf:resource="#Storage"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DiskReadWriteSpeed">
+  <rdfs:subClassOf rdf:resource="#Storage"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SensorData">
+  <rdfs:subClassOf rdf:resource="#Sensors"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CoreTemperature">
+  <rdfs:subClassOf rdf:resource="#Sensors"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NetworkLatency">
+  <rdfs:subClassOf rdf:resource="#Network"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PacketLoss">
+  <rdfs:subClassOf rdf:resource="#Network"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Jitter">
+  <rdfs:subClassOf rdf:resource="#Network"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PacketRetransmissionRate">
+  <rdfs:subClassOf rdf:resource="#Network"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DataTransferRate">
+  <rdfs:subClassOf rdf:resource="#Network"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NetworkLifespan">
+  <rdfs:subClassOf rdf:resource="#Network"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Congestion">
+  <rdfs:subClassOf rdf:resource="#Network"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NetworkResilience">
+  <rdfs:subClassOf rdf:resource="#Network"/>
+</owl:Class>
+
+<owl:Class rdf:about="#LatencyAndResponseTime">
+  <rdfs:subClassOf rdf:resource="#Software"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ResponseTime">
+  <rdfs:subClassOf rdf:resource="#Software"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ProcessingDelay">
+  <rdfs:subClassOf rdf:resource="#Software"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ApplicationAvailability">
+  <rdfs:subClassOf rdf:resource="#Software"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Throughput">
+  <rdfs:subClassOf rdf:resource="#Software"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RequestProcessingRate">
+  <rdfs:subClassOf rdf:resource="#Software"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PerformanceKPIs">
+  <rdfs:subClassOf rdf:resource="#Software"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GarbageCollectionTime">
+  <rdfs:subClassOf rdf:resource="#Software"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MemorySpeed">
+  <rdfs:subClassOf rdf:resource="#Software"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerConsumption">
+  <rdfs:subClassOf rdf:resource="#Energy"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#reduces"/>
+      <owl:someValuesFrom rdf:resource="#Downtime"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#EnergyConsumption">
+  <rdfs:subClassOf rdf:resource="#Energy"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BatteryLife">
+  <rdfs:subClassOf rdf:resource="#Energy"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerUsagePerTransaction">
+  <rdfs:subClassOf rdf:resource="#Energy"/>
+</owl:Class>
+
+<owl:Class rdf:about="#EnergyEfficiency">
+  <rdfs:subClassOf rdf:resource="#Energy"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ErrorRates">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SecurityLogMonitoring">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#IntrusionAttempts">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MalwareDetectionRate">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#AnomalyDetection">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DetectionRates">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FalsePositiveRate">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FalseNegativeRate">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#QualityOfService">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Downtime">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ServiceUptime">
+  <rdfs:subClassOf rdf:resource="#SecurityAndReliability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SLA">
+  <rdfs:subClassOf rdf:resource="#Metric"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#contributesTo"/>
+      <owl:someValuesFrom rdf:resource="#QualityOfService"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#contributesTo"/>
+      <owl:someValuesFrom rdf:resource="#Availability"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#SLAandQoS">
+  <rdfs:subClassOf rdf:resource="#SLA"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Availability">
+  <rdfs:subClassOf rdf:resource="#SLA"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Resilience">
+  <rdfs:subClassOf rdf:resource="#SLA"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Stability">
+  <rdfs:subClassOf rdf:resource="#SLA"/>
+</owl:Class>
+
+
+</rdf:RDF>

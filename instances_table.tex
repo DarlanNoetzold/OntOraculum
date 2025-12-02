@@ -1,0 +1,167 @@
+
+\begin{longtable}{|l|p{2cm}|l|l|p{3cm}|p{3cm}|}
+\hline
+Instance Name & Class & Value & Unit & Description & Depends On \\ \hline
+\endfirsthead
+\hline
+Instance Name & Class & Value & Unit & Description & Depends On \\ \hline
+\endhead
+high\_cpu\_instance & CPUUsage & 85.0 & percentage & CPU usage above 80%, triggering high resource usage. & high\_energy\_usage\_instance, low\_memory\_instance \\ \hline
+low\_memory\_instance & MemoryUsage & 25.0 & percentage & Memory usage is less than 30%, triggering low memory scenario. & critical\_disk\_instance \\ \hline
+overloaded\_gpu\_instance & GPUUsage & 90.0 & percentage & GPU usage above 85%, triggering overloaded GPU. & inefficient\_energy\_instance, high\_energy\_usage\_instance \\ \hline
+critical\_disk\_instance & DiskReadWriteSpeed & 8.0 & MB/s & Disk read/write speed below 10 MB/s, triggering critical disk performance. & stable\_resource\_instance \\ \hline
+stable\_resource\_instance & CPUUsage & 45.0 & percentage & Stable CPU usage below 50% with memory usage below 60%, triggering stable resource usage. &  \\ \hline
+unbalanced\_network\_instance & NetworkLatency & 160.0 & ms & Network latency above 150 ms, triggering unbalanced network. & high\_energy\_usage\_instance \\ \hline
+high\_energy\_usage\_instance & PowerConsumption & 250.0 & Watts & Power consumption greater than 200W, triggering high energy usage. &  \\ \hline
+inefficient\_energy\_instance & EnergyEfficiency & 60.0 & percentage & Energy efficiency below 70%, triggering inefficient energy. & stable\_resource\_instance \\ \hline
+overloaded\_devices\_instance & PowerConsumption & 130.0 & Watts & Power consumption above 120W, triggering overloaded devices. & critical\_disk\_instance, low\_power\_instance \\ \hline
+high\_error\_rate\_instance & ErrorRates & 30.0 & percentage & Error rate above 25%, triggering high error rate scenario. &  \\ \hline
+potential\_intrusion\_instance & IntrusionAttempts & 12.0 & attempts/hour & Intrusion attempts above 10/hour, triggering potential intrusion scenario. &  \\ \hline
+malware\_detected\_instance & MalwareDetectionRate & 6.0 & detections/hour & Frequent malware detections above 5/hour, triggering malware detected. &  \\ \hline
+accurate\_detection\_instance & DetectionRates & 96.0 & percentage & High detection accuracy, below 5% false positives, triggering accurate detection scenario. &  \\ \hline
+compromised\_security\_instance & CompromisedSecurity &  &  & Compromised security detected due to high error rate and malware detections. &  \\ \hline
+high\_resource\_usage\_instance & HighResourceUsage &  &  &  &  \\ \hline
+low\_memory\_scenario\_instance & LowMemoryScenario &  &  &  &  \\ \hline
+critical\_disk\_performance\_instance & CriticalDiskPerformance &  &  &  &  \\ \hline
+stable\_resource\_usage\_instance & StableResourceUsage &  &  &  &  \\ \hline
+low\_power\_instance & PowerConsumption & 90.0 & Watts & Low power consumption detected, under 100W. &  \\ \hline
+high\_battery\_instance & BatteryLife & 95.0 & percentage & Battery life at optimal level, over 90%. &  \\ \hline
+optimal\_energy\_instance & EnergyEfficiency & 92.0 & percentage & Energy efficiency above 90%, optimal energy usage. &  \\ \hline
+service\_uptime\_instance & ServiceUptime & 98.0 & percentage & Service uptime is at 98%, high reliability. &  \\ \hline
+false\_positive\_high\_instance & FalsePositiveRate & 12.0 & percentage & High false positive rate in security alerts. & high\_error\_rate\_instance \\ \hline
+critical\_performance\_instance & CriticalPerformance &  &  &  &  \\ \hline
+high\_impact\_qos\_instance & HighImpactQoS &  &  &  &  \\ \hline
+degraded\_qos\_instance & DegradedQoS &  &  &  &  \\ \hline
+unstable\_qos\_instance & UnstableQoS &  &  &  &  \\ \hline
+critical\_energy\_instance & EnergyEfficiency & 65.0 &  & Energy efficiency is critically low. & overloaded\_devices\_instance \\ \hline
+stable\_performance\_instance & ServiceUptime & 99.0 &  & Stable performance due to high uptime. & optimal\_energy\_instance, critical\_disk\_instance \\ \hline
+balanced\_network\_instance & NetworkLatency & 100.0 &  & Balanced network due to reduced latency. & low\_power\_instance, critical\_energy\_instance \\ \hline
+critical\_service\_instance & Downtime & 80.0 &  & Critical downtime impacting QoS. & high\_energy\_usage\_instance, stable\_performance\_instance \\ \hline
+latency\_instance\_6247 & NetworkLatency & 151.98 &  &  &  \\ \hline
+qos\_instance\_4883 & QualityOfService & 57.36 &  &  & latency\_instance\_6247 \\ \hline
+latency\_instance\_1898 & NetworkLatency & 160.59 &  &  &  \\ \hline
+qos\_instance\_5751 & QualityOfService & 72.03 &  &  & latency\_instance\_1898 \\ \hline
+latency\_instance\_1457 & NetworkLatency & 176.77 &  &  &  \\ \hline
+qos\_instance\_7587 & QualityOfService & 78.07 &  &  & latency\_instance\_1457 \\ \hline
+latency\_outlier\_8024 & NetworkLatency & 30.34 &  &  &  \\ \hline
+latency\_outlier\_9330 & NetworkLatency & 49.71 &  &  &  \\ \hline
+latency\_outlier\_8754 & NetworkLatency & 36.9 &  &  &  \\ \hline
+latency\_outlier\_5826 & NetworkLatency & 14.09 &  &  &  \\ \hline
+latency\_outlier\_2645 & NetworkLatency & 48.12 &  &  &  \\ \hline
+uptime\_instance\_3248 & ServiceUptime & 99.08 &  &  &  \\ \hline
+stability\_instance\_6229 & Stability & 93.92 &  &  & uptime\_instance\_3248 \\ \hline
+uptime\_instance\_1010 & ServiceUptime & 98.57 &  &  &  \\ \hline
+stability\_instance\_2456 & Stability & 86.48 &  &  & uptime\_instance\_1010 \\ \hline
+stability\_outlier\_5844 & Stability & 46.03 &  &  &  \\ \hline
+stability\_outlier\_7468 & Stability & 23.57 &  &  &  \\ \hline
+stability\_outlier\_2539 & Stability & 10.38 &  &  &  \\ \hline
+stability\_outlier\_4574 & Stability & 44.01 &  &  &  \\ \hline
+stability\_outlier\_7624 & Stability & 33.83 &  &  &  \\ \hline
+stability\_outlier\_5420 & Stability & 48.05 &  &  &  \\ \hline
+cpu\_instance\_6631 & CPUUsage & 32.47 &  &  &  \\ \hline
+memory\_instance\_5138 & MemoryUsage & 69.03 &  &  &  \\ \hline
+through\_instance\_7002 & Throughput & 88.28 &  &  &  \\ \hline
+cpu\_instance\_3396 & CPUUsage & 60.55 &  &  &  \\ \hline
+memory\_instance\_9853 & MemoryUsage & 58.01 &  &  &  \\ \hline
+through\_instance\_3589 & Throughput & 128.52 &  &  &  \\ \hline
+cpu\_outlier\_6455 & CPUUsage & 7.24 &  &  &  \\ \hline
+cpu\_outlier\_8822 & CPUUsage & 7.29 &  &  &  \\ \hline
+cpu\_outlier\_8160 & CPUUsage & 28.06 &  &  &  \\ \hline
+cpu\_outlier\_5542 & CPUUsage & 21.76 &  &  &  \\ \hline
+energy\_instance\_7081 & EnergyEfficiency & 70.08 &  &  &  \\ \hline
+transaction\_instance\_1913 & PowerUsagePerTransaction & 34.11 &  &  &  \\ \hline
+energy\_instance\_3254 & EnergyEfficiency & 76.09 &  &  &  \\ \hline
+transaction\_instance\_1519 & PowerUsagePerTransaction & 16.52 &  &  &  \\ \hline
+energy\_outlier\_8690 & EnergyEfficiency & 43.18 &  &  &  \\ \hline
+energy\_outlier\_8675 & EnergyEfficiency & 27.31 &  &  &  \\ \hline
+energy\_outlier\_3652 & EnergyEfficiency & 34.45 &  &  &  \\ \hline
+intrusion\_instance\_8897 & IntrusionAttempts & 13.06 &  &  &  \\ \hline
+stability\_instance\_2789 & Stability & 66.71 &  &  & intrusion\_instance\_8897 \\ \hline
+intrusion\_instance\_4438 & IntrusionAttempts & 6.58 &  &  &  \\ \hline
+stability\_instance\_2590 & Stability & 60.79 &  &  & intrusion\_instance\_4438 \\ \hline
+intrusion\_outlier\_2923 & IntrusionAttempts & 4.84 &  &  &  \\ \hline
+intrusion\_outlier\_2183 & IntrusionAttempts & 2.2 &  &  &  \\ \hline
+intrusion\_outlier\_6056 & IntrusionAttempts & 1.34 &  &  &  \\ \hline
+intrusion\_outlier\_6917 & IntrusionAttempts & 1.34 &  &  &  \\ \hline
+intrusion\_outlier\_9014 & IntrusionAttempts & 3.51 &  &  &  \\ \hline
+intrusion\_outlier\_9110 & IntrusionAttempts & 1.83 &  &  &  \\ \hline
+cpu\_prediction\_8455 & CPUUsage & 57.03 &  &  &  \\ \hline
+performance\_instance\_6042 & PerformanceKPIs & 75.89 &  &  & cpu\_prediction\_8455 \\ \hline
+cpu\_prediction\_1569 & CPUUsage & 76.83 &  &  &  \\ \hline
+performance\_instance\_6915 & PerformanceKPIs & 78.37 &  &  & cpu\_prediction\_1569 \\ \hline
+cpu\_prediction\_6064 & CPUUsage & 77.32 &  &  &  \\ \hline
+performance\_instance\_1001 & PerformanceKPIs & 67.23 &  &  & cpu\_prediction\_6064 \\ \hline
+cpu\_prediction\_6415 & CPUUsage & 74.18 &  &  &  \\ \hline
+performance\_instance\_9764 & PerformanceKPIs & 73.73 &  &  & cpu\_prediction\_6415 \\ \hline
+cpu\_prediction\_8814 & CPUUsage & 50.62 &  &  &  \\ \hline
+performance\_instance\_1618 & PerformanceKPIs & 67.94 &  &  & cpu\_prediction\_8814 \\ \hline
+cpu\_prediction\_8696 & CPUUsage & 57.97 &  &  &  \\ \hline
+performance\_instance\_6061 & PerformanceKPIs & 85.48 &  &  & cpu\_prediction\_8696 \\ \hline
+cpu\_prediction\_outlier\_2502 & CPUUsage & 37.5 &  &  &  \\ \hline
+cpu\_prediction\_outlier\_9525 & CPUUsage & 44.43 &  &  &  \\ \hline
+cpu\_prediction\_outlier\_7716 & CPUUsage & 34.16 &  &  &  \\ \hline
+cpu\_prediction\_outlier\_6374 & CPUUsage & 24.94 &  &  &  \\ \hline
+cache\_miss\_rate\_instance\_6402 & CacheMissRate & 4.17 &  &  &  \\ \hline
+through\_instance\_6632 & Throughput & 76.09 &  &  &  \\ \hline
+failure\_instance\_8322 & CriticalPerformance &  &  &  & cache\_miss\_rate\_instance\_6402, through\_instance\_6632 \\ \hline
+cache\_miss\_rate\_instance\_7159 & CacheMissRate & 5.0 &  &  &  \\ \hline
+through\_instance\_6195 & Throughput & 86.65 &  &  &  \\ \hline
+failure\_instance\_2450 & CriticalPerformance &  &  &  & cache\_miss\_rate\_instance\_7159, through\_instance\_6195 \\ \hline
+cache\_miss\_rate\_instance\_4170 & CacheMissRate & 2.52 &  &  &  \\ \hline
+through\_instance\_7589 & Throughput & 59.12 &  &  &  \\ \hline
+failure\_instance\_4532 & CriticalPerformance &  &  &  & cache\_miss\_rate\_instance\_4170, through\_instance\_7589 \\ \hline
+cache\_outlier\_4110 & CacheMissRate & 23.2 &  &  &  \\ \hline
+cache\_outlier\_3269 & CacheMissRate & 44.68 &  &  &  \\ \hline
+cache\_outlier\_9009 & CacheMissRate & 30.0 &  &  &  \\ \hline
+cache\_outlier\_5612 & CacheMissRate & 45.82 &  &  &  \\ \hline
+cache\_outlier\_5028 & CacheMissRate & 46.32 &  &  &  \\ \hline
+network\_metric\_8699 & Network &  &  &  &  \\ \hline
+resilience\_impact\_2345 & Resilience &  &  &  & network\_metric\_8699 \\ \hline
+network\_metric\_4050 & Network &  &  &  &  \\ \hline
+resilience\_impact\_4547 & Resilience &  &  &  & network\_metric\_4050 \\ \hline
+network\_metric\_1954 & Network &  &  &  &  \\ \hline
+resilience\_impact\_2273 & Resilience &  &  &  & network\_metric\_1954 \\ \hline
+network\_metric\_6050 & Network &  &  &  &  \\ \hline
+resilience\_impact\_9308 & Resilience &  &  &  & network\_metric\_6050 \\ \hline
+network\_metric\_5523 & Network &  &  &  &  \\ \hline
+resilience\_impact\_3883 & Resilience &  &  &  & network\_metric\_5523 \\ \hline
+network\_outlier\_8553 & Network &  &  &  &  \\ \hline
+network\_outlier\_4345 & Network &  &  &  &  \\ \hline
+network\_outlier\_9098 & Network &  &  &  &  \\ \hline
+network\_outlier\_2724 & Network &  &  &  &  \\ \hline
+network\_outlier\_5134 & Network &  &  &  &  \\ \hline
+network\_outlier\_8397 & Network &  &  &  &  \\ \hline
+congestion\_instance\_3276 & Congestion & 49.48 &  &  &  \\ \hline
+resource\_usage\_instance\_5309 & HighResourceUsage &  &  &  & congestion\_instance\_3276 \\ \hline
+service\_degradation\_instance\_1922 & ServiceDegradation &  &  &  & resource\_usage\_instance\_5309 \\ \hline
+congestion\_instance\_3814 & Congestion & 78.5 &  &  &  \\ \hline
+resource\_usage\_instance\_9597 & HighResourceUsage &  &  &  & congestion\_instance\_3814 \\ \hline
+service\_degradation\_instance\_9580 & ServiceDegradation &  &  &  & resource\_usage\_instance\_9597 \\ \hline
+congestion\_instance\_2348 & Congestion & 55.7 &  &  &  \\ \hline
+resource\_usage\_instance\_1690 & HighResourceUsage &  &  &  & congestion\_instance\_2348 \\ \hline
+service\_degradation\_instance\_4529 & ServiceDegradation &  &  &  & resource\_usage\_instance\_1690 \\ \hline
+congestion\_instance\_8651 & Congestion & 44.56 &  &  &  \\ \hline
+resource\_usage\_instance\_5481 & HighResourceUsage &  &  &  & congestion\_instance\_8651 \\ \hline
+service\_degradation\_instance\_4056 & ServiceDegradation &  &  &  & resource\_usage\_instance\_5481 \\ \hline
+congestion\_instance\_7622 & Congestion & 45.74 &  &  &  \\ \hline
+resource\_usage\_instance\_6352 & HighResourceUsage &  &  &  & congestion\_instance\_7622 \\ \hline
+service\_degradation\_instance\_3718 & ServiceDegradation &  &  &  & resource\_usage\_instance\_6352 \\ \hline
+congestion\_outlier\_7379 & Congestion & 22.84 &  &  &  \\ \hline
+congestion\_outlier\_5067 & Congestion & 19.3 &  &  &  \\ \hline
+congestion\_outlier\_5749 & Congestion & 26.11 &  &  &  \\ \hline
+metric\_instance\_1925 & Metric &  &  & Metric impacting QoS 1 &  \\ \hline
+qos\_impact\_instance\_2290 & QualityOfService & 97.11 &  & Quality of Service impacted by metric 1 &  \\ \hline
+metric\_instance\_5426 & Metric &  &  & Metric impacting QoS 2 &  \\ \hline
+qos\_impact\_instance\_2984 & QualityOfService & 86.83 &  & Quality of Service impacted by metric 2 &  \\ \hline
+metric\_instance\_9482 & Metric &  &  & Metric impacting QoS 3 &  \\ \hline
+qos\_impact\_instance\_8653 & QualityOfService & 97.84 &  & Quality of Service impacted by metric 3 &  \\ \hline
+metric\_instance\_4883 & Metric &  &  & Metric impacting QoS 4 &  \\ \hline
+qos\_impact\_instance\_4008 & QualityOfService & 89.15 &  & Quality of Service impacted by metric 4 &  \\ \hline
+network\_metric\_9027 & Network & 116.72 &  & Network metric 1 impacting resilience. &  \\ \hline
+resilience\_instance\_4550 & Resilience & 70.35 &  & Resilience impacted by network metric 1 & network\_metric\_9027 \\ \hline
+network\_metric\_7344 & Network & 69.01 &  & Network metric 2 impacting resilience. &  \\ \hline
+resilience\_instance\_9167 & Resilience & 81.94 &  & Resilience impacted by network metric 2 & network\_metric\_7344 \\ \hline
+network\_metric\_3642 & Network & 106.42 &  & Network metric 3 impacting resilience. &  \\ \hline
+resilience\_instance\_4332 & Resilience & 98.29 &  & Resilience impacted by network metric 3 & network\_metric\_3642 \\ \hline
+network\_metric\_1502 & Network & 104.7 &  & Network metric 4 impacting resilience. &  \\ \hline
+resilience\_instance\_6086 & Resilience & 97.17 &  & Resilience impacted by network metric 4 & network\_metric\_1502 \\ \hline\end{longtable}
